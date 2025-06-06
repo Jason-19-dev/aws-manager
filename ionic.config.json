@@ -1,0 +1,7 @@
+{
+  "name": "jnsapp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
