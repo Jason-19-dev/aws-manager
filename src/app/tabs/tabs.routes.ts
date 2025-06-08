@@ -14,12 +14,17 @@ export const routes: Routes = [
       {
         path: 'services',
         loadComponent: () =>
-          import('../services/services.page').then((m) => m.ServicesPage),
+          import('../aws-services/services.page').then((m) => m.ServicesPage),
       },
       {
         path: 'settings',
         loadComponent: () =>
           import('../settings/settings.page').then((m) => m.SettingsPage),
+      },
+      {
+        path: 'ec2',
+        loadComponent: () =>
+          import('../aws-services/ec2/ec2.page').then((m) => m.Ec2Page),
       },
       {
         path: '',

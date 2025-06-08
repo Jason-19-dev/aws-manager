@@ -6,6 +6,11 @@ export const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.routes').then((m) => m.routes),
   },
   // {
+  //   path: 'aws/ec2',
+  //   loadComponent: () => import('./aws-services/ec2/ec2.page').then( m => m.Ec2Page)
+  // },
+
+  // {
   //   path: 'settings',
   //   loadComponent: () => import('./settings/settings.page').then( m => m.SettingsPage)
   // },

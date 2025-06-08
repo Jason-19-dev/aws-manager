@@ -5,15 +5,11 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card color="light">
-    <ion-card-header>
-      <p>AWS Services</p>
-    </ion-card-header>
 
-    <!-- <ion-card-content> -->
+   <ion-title size="large" class ="ion-padding">Aws Services</ion-title>
       <ion-list  [inset]="true">
 
-        <ion-item [button]="true" lines="none">
+        <ion-item [button]="true" lines="none" routerLink="/aws/ec2">
           EC2
         </ion-item>
 
@@ -21,15 +17,10 @@
           API GATEWAY
         </ion-item>
         <ion-item button="true" lines="none">
-          ECR
-        </ion-item>
-        <ion-item button="true" lines="none">
           LAMBDA
         </ion-item>
-
+        
       </ion-list>
-
-    <!-- </ion-card-content> -->
-  </ion-card>
+      
 
 </ion-content>

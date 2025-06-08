@@ -1,18 +1,45 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="false">
   <ion-toolbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Aws Manager</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
- <ion-card>
-  <ion-card-header>
-    <ion-card-title>Aws Manager</ion-card-title>
-    <ion-card-subtitle> </ion-card-subtitle>
+<ion-content class="ion-padding">
+
+ <ion-refresher slot="fixed" (ionRefresh)="refreshCost($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  
+  <ion-card>
+    <ion-icon name="refresh-outline" (click)="handleRefresh($event)"></ion-icon>
+    <ion-card-header>
+      <ion-card-title style="color: #fff;">Costo Mensual (USD)</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-card-title style="color: #fff;">$ {{ costo}}</ion-card-title>
+    </ion-card-content>
+  </ion-card>
+
+<!-- <ion-card>  -->
+<ion-card-header>
+  <ion-card-title>Costos por Servicio</ion-card-title>
   </ion-card-header>
 
-  <ion-card-content>
-    Aws manager is a web app that allows you to manage your aws resources
+  <ion-card-content class="ion-padding">
+    <ion-list>
+      <ion-item *ngFor="let item of costosPorServicio">
+        <p>
+          {{ item.service }}
+      </p>
+        <p slot="end">
+          ${{ item.cost}}
+        </p>
+      </ion-item>
+    </ion-list>
   </ion-card-content>
-  </ion-card>
+<!-- </ion-card> -->
+
+
+
+
 </ion-content>
