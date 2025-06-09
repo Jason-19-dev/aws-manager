@@ -1,9 +1,39 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>Settings</ion-title>
+    <ion-button slot="end" class="ion-padding-horizontal" (click)="logout()">Logout <ion-icon name="log-out-outline" slot="end"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
- 
+<ion-content color="light">
+
+  <ion-list [inset]="true" lines="none">
+
+    <ion-item>
+      <ion-input label="First Name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input label="Last Name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-toggle color="success">
+        <ion-label>Allow Notifications</ion-label>
+        <ion-note color="medium">Unsubscribe at any time</ion-note>
+      </ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-toggle color="success">
+        <ion-label>Allow Biometric</ion-label>
+        <ion-note color="medium">Unsubscribe at any time</ion-note>
+      </ion-toggle>
+    </ion-item>
+
+
+
+  </ion-list>
+
+
 </ion-content>

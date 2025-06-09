@@ -13,4 +13,9 @@ export type Instance = {
   Type: string;
   AZ: string;
   LaunchTime: string;
+  PublicIpAddress: string;
 };
+
+export type User={
+  username: string;
+}

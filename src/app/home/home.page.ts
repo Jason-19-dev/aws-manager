@@ -1,26 +1,56 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule, NgFor} from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonRefresher,IonRefresherContent,IonContent, IonHeader, IonTitle, IonToolbar,IonCard,IonCardHeader,IonCardContent,IonCardTitle,IonList,IonItem,IonIcon} from '@ionic/angular/standalone';
+import { 
+  IonRefresher,
+  IonRefresherContent,
+  IonContent, 
+  IonHeader, 
+  IonTitle, 
+  IonToolbar,
+  IonCard,
+  IonCardHeader,
+  IonCardContent,
+  IonCardTitle,
+  IonList,
+  IonItem,
+  IonIcon,
+  IonLabel,
+  IonSelect,
+  IonSelectOption
+} from '@ionic/angular/standalone';
 import { AwsCostService } from 'src/services/aws_services/cost/aws-cost.service';
+import { CurrentUserService } from 'src/services/currentUser/current-user.service';
 import { addIcons } from 'ionicons';
-import { refreshOutline } from 'ionicons/icons';
+import { refresh } from 'ionicons/icons';
+import { User } from 'src/types';
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
   standalone: true,
-  imports: [IonRefresher,IonRefresherContent,IonContent, IonHeader, IonTitle, IonToolbar, FormsModule,IonCard,IonCardContent,IonCardHeader,IonCardTitle,IonList,IonItem,NgFor,IonIcon]
+  imports: [IonRefresher,IonRefresherContent,IonContent, IonHeader, IonTitle, IonToolbar, FormsModule,IonCard,IonCardContent,IonCardHeader,IonCardTitle,IonList,IonItem,NgFor,IonIcon,IonLabel,IonSelect,IonSelectOption
+  ]
 })
 export class HomePage implements OnInit {
 
-  constructor(private costService: AwsCostService) { }
+  constructor(
+    private costService: AwsCostService, 
+    private currentUserService: CurrentUserService
+  ){ 
+
+  }
+
+  currentUser: User = this.currentUserService.getCurrentUser();
+  region: string []= [ 
+    "us-east-1","us-east-2","us-west-1","us-west-2","ap-northeast-1","ap-northeast-2","ap-south-1","ap-southeast-1","ap-southeast-2","ca-central-1","eu-central-1","eu-west-1","eu-west-2","sa-east-1"
+  ];
   costo: any = 0;
   costosPorServicio: { service: string, cost: number }[] = [];
+
   ngOnInit() {
-    // this.getMonthlyCost();
-    // this.getCostByService();
-    addIcons({ refreshOutline });
+    this.handleRefresh(null);
+    addIcons({ refresh });
   }
 
   async getMonthlyCost() {
@@ -38,17 +68,14 @@ export class HomePage implements OnInit {
 
 
   handleRefresh(event: any) {
-    setTimeout(() => {
-      this.getMonthlyCost();
-      this.getCostByService();
-      event.target.complete();
-    }, 2000);
+    this.getMonthlyCost();
+    this.getCostByService();
   }
   refreshCost(event: any) {
     setTimeout(() => {
       this.getMonthlyCost();
       this.getCostByService();
       event.target.complete();
-    }, 2000);
+    }, 1000);
   }
 }

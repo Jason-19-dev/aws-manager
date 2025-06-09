@@ -1,0 +1,26 @@
+<ion-content class="ion-padding" fullscreen="false">
+
+  <h1 style="color: white; font-size: 40px;">Aws Manager</h1>
+
+  <div class="center-container">
+    <ion-card class="ion-padding" [formGroup]="loginForm">
+
+      <ion-input type="text" label="Username" formControlName="username"></ion-input>
+
+      <ion-input type="password" label="Password" formControlName="password">
+        <ion-input-password-toggle slot="end" color="dark"></ion-input-password-toggle>
+
+        <ion-button *ngIf="!isBiometric" fill="clear" slot="end" color="dark" (click)="biometricLogin()">
+          <ion-icon name="finger-print-outline"></ion-icon>
+        </ion-button>
+      </ion-input>
+
+
+      <ion-button expand="block" (click)="onSubmit()" style="--background: #ec7211; color:black">Login</ion-button>
+    </ion-card>
+  </div>
+
+  <p style="color: white; text-align: center;">Version 1.0</p>
+  <p style="color: white; text-align: center;">{{isBiometric}}</p>
+
+</ion-content>

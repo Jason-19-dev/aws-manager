@@ -1,0 +1,26 @@
+ion-content {
+  --background: transparent !important;
+  background: url("../../../assets/nube.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+ion-button {
+  --border: none;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+ion-card {
+  // --background: transparent !important;
+  //  background-color: white;
+  font-size: 16px;
+
+}
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 270px;
+}

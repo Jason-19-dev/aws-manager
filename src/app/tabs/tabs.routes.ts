@@ -27,6 +27,18 @@ export const routes: Routes = [
           import('../aws-services/ec2/ec2.page').then((m) => m.Ec2Page),
       },
       {
+        path: 'rds',
+        loadComponent: () => import('../aws-services/rds/rds.page').then(m => m.RdsPage)
+      },
+      {
+        path: 'lambda',
+        loadComponent: () => import('../aws-services/lambda/lambda.page').then(m => m.LambdaPage)
+      },
+      {
+        path: 'api gateway',
+        loadComponent: () => import('../aws-services/apigateway/apigateway.page').then(m => m.ApigatewayPage)
+      },
+      {
         path: '',
         redirectTo: '/aws/home',
         pathMatch: 'full',
@@ -35,7 +47,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/aws/home',
+    redirectTo: '/aws/login',
     pathMatch: 'full',
   },
 ];

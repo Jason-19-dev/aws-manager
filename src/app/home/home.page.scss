@@ -1,9 +1,18 @@
 ion-card {
 
 
-background: linear-gradient(to right, #434343, #000000); 
+    background: linear-gradient(to right, #434343, #000000);
 
     --color: rgb(255, 255, 255) !important;
     border-radius: 5px;
     padding: 10px;
+}
+
+
+.region-select {
+    display: flex;
+    // align-items: center;
+    --background: transparent !important;
+    color: white;
+
 }

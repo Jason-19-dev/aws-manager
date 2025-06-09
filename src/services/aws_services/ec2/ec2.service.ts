@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -7,12 +8,12 @@ import { HttpClient } from '@angular/common/http';
 export class Ec2Service {
 
   constructor(private http: HttpClient) { }
-
+  private url = environment.url + '/instance';
   describeInstances(data:any) {
-    return this.http.post<any>('https://z8cxowyzx6.execute-api.us-east-2.amazonaws.com/dev/instance',{"action":"describe"});
+    return this.http.post<any>(this.url,{"action":"describe"});
   }
   instances(data:any) {
-    return this.http.post<any>('https://z8cxowyzx6.execute-api.us-east-2.amazonaws.com/dev/instance',data);
+    return this.http.post<any>(this.url,data);
   }
 
 
