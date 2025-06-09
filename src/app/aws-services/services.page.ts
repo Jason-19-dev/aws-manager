@@ -12,7 +12,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonItem,IonList} from '@io
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,IonItem,IonList,RouterLink]
 })
 export class ServicesPage implements OnInit {
-
+  services = ['ec2', 'api gateway', 'lambda','rds'];
   constructor() { }
 
   ngOnInit() {

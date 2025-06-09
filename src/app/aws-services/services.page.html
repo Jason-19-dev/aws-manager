@@ -4,23 +4,13 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="false">
 
-   <ion-title size="large" class ="ion-padding">Aws Services</ion-title>
-      <ion-list  [inset]="true">
-
-        <ion-item [button]="true" lines="none" routerLink="/aws/ec2">
-          EC2
-        </ion-item>
-
-        <ion-item button="true" lines="none">
-          API GATEWAY
-        </ion-item>
-        <ion-item button="true" lines="none">
-          LAMBDA
-        </ion-item>
-        
-      </ion-list>
-      
+  <ion-title size="large" class="ion-padding">Aws Services</ion-title>
+  <ion-list [inset]="true" *ngFor="let service of services, let i = index">
+      <ion-item [button]="true" lines="none" routerLink="/aws/{{services[i]}}">
+      {{services[i].toUpperCase()}}
+      </ion-item>
+  </ion-list>
 
 </ion-content>

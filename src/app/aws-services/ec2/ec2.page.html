@@ -1,25 +1,29 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-    <ion-back-button default-href="#"></ion-back-button>
+    <ion-back-button default-href="aws/services" style="color: #fff"></ion-back-button>
   </ion-buttons>
     <ion-title>Instances</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding-top" >
-  <ion-list [inset]="true" *ngFor="let ec2 of instances" >
+   <ion-refresher slot="fixed" (ionRefresh)="refrehcInstances($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-list [inset]="true" *ngFor="let ec2 of instances, let i = index" >
     <div style="display: flex;">
       <ion-label class="ion-padding">{{ec2.InstanceId.toUpperCase()}}</ion-label>
-      <ion-label class="ion-padding">{{ec2.LaunchTime.slice(0,10)}}</ion-label>
+      <ion-label class="ion-padding">{{ec2.PublicIpAddress}}</ion-label>
     </div>
+    <!-- <ion-label class="ion-padding">{{ec2.LaunchTime.slice(0,10)}}</ion-label> -->
 
     <ion-item lines="none">
       <ion-icon name="hardware-chip-outline" color="warning" size="large" slot="start"></ion-icon>
       <ion-label>{{ec2.State}}</ion-label>
       <ion-label>{{ec2.Type}}</ion-label>
-        <ion-button slot="end" color="success" (click)="startInstance(ec2.InstanceId)">Start</ion-button>
-        <ion-button slot="end" color="danger" (click)="stopInstance(ec2.InstanceId)">Stop</ion-button>
+        <ion-button slot="end" color="success" (click)="startInstance(ec2.InstanceId)" [disabled]="ec2.State === 'running'">Start</ion-button>
+        <ion-button slot="end" color="danger" (click)="stopInstance(ec2.InstanceId)" [disabled]="ec2.State === 'stopped'">Stop</ion-button>
     </ion-item>
   </ion-list>
 </ion-content>
